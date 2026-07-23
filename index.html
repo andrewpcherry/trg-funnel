@@ -228,8 +228,11 @@ table.cmp tr:nth-child(even) td{background:#fafbfd}
 /* ---------- advocate ---------- */
 .advocate{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:center}
 .portrait{position:relative}
-.portrait .frame{aspect-ratio:4/4.6;border-radius:18px;background:linear-gradient(160deg,var(--blue-deep),var(--blue-2));display:flex;align-items:flex-end;justify-content:center;overflow:hidden;box-shadow:var(--shadow-lg)}
-.portrait .frame svg{width:78%;height:auto;opacity:.5;margin-bottom:-6%}
+.portrait .frame{aspect-ratio:4/4.6;border-radius:18px;background:linear-gradient(160deg,var(--blue-deep),var(--blue-2));overflow:hidden;box-shadow:var(--shadow-lg);display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:24px;align-content:center}
+.pstat{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.16);border-radius:12px;padding:18px 16px;display:flex;flex-direction:column;justify-content:center}
+.pstat b{font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(22px,2.4vw,30px);color:#fff;line-height:1.1;display:flex;align-items:center;gap:6px}
+.pstat b svg{width:20px;height:20px;fill:#f5b301;flex:none}
+.pstat span{font-size:12px;color:#cfe4f2;line-height:1.45;margin-top:6px}
 .portrait .badge{position:absolute;left:-14px;bottom:26px;background:#fff;border-radius:12px;box-shadow:var(--shadow-md);padding:12px 18px;border:1px solid var(--border)}
 .portrait .badge b{font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:15px;letter-spacing:.03em;color:var(--blue-deep);display:block}
 .portrait .badge span{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--red)}
@@ -482,9 +485,12 @@ footer .legal{margin-top:10px;font-size:12px;line-height:1.7}
 <section class="alt">
   <div class="wrap advocate">
     <div class="portrait">
+      <!-- OWNER PHOTO: when the headshot arrives, replace this stats grid with the portrait image (keep .frame) -->
       <div class="frame">
-        <!-- OWNER PHOTO: replace this SVG silhouette with the owner's portrait image -->
-        <svg viewBox="0 0 200 200" fill="#e1f1ff"><circle cx="100" cy="74" r="42"/><path d="M100 126c-46 0-72 26-72 74h144c0-48-26-74-72-74z"/></svg>
+        <div class="pstat"><b><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.2 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg>5.0</b><span>Google rating across 56 homeowner reviews</span></div>
+        <div class="pstat"><b>$7.77M</b><span>In insurance claims approved for Texas homeowners</span></div>
+        <div class="pstat"><b>94%</b><span>Of submitted claims approved or supplemented in the client's favor</span></div>
+        <div class="pstat"><b>HAAG</b><span>Certified inspectors with full photo documentation</span></div>
       </div>
       <div class="badge">
         <span>Your Local Advocate</span>
@@ -570,26 +576,25 @@ footer .legal{margin-top:10px;font-size:12px;line-height:1.7}
 <section class="book-sec" id="guide">
   <div class="wrap book-grid">
     <div class="book">
-      <!-- EBOOK COVER PLACEHOLDER: swap this CSS cover for the final designed cover image when the e-book is ready -->
+      <!-- Cover art is CSS-drawn to match the real guide (repair-replace-or-file-a-claim.pdf). Swap for a cover image export if preferred. -->
       <div class="cover">
         <div class="k">Free Homeowner Guide</div>
-        <div class="bt">Before<br>You <span class="r">File</span></div>
-        <div class="bs">The Central Texas Homeowner's Guide to Roof Damage, Insurance Claims and Solar-Safe Replacement</div>
+        <div class="bt">Repair, Replace or <span class="r">File a Claim?</span></div>
+        <div class="bs">A Central Texas homeowner's guide to what your roof actually needs. Follow the evidence, not the sales pressure.</div>
         <div class="band"><b>Texas Roof Guardians</b><span>San Antonio · Austin · Central Texas</span></div>
       </div>
     </div>
     <div class="book-body">
       <div class="eyebrow">Free Guide</div>
-      <h2>Read this before you file a roof claim</h2>
-      <p>Not ready to talk to anyone yet? Smart. Get the guide first and understand the process before you make a single call.</p>
+      <h2>Know what your roof actually needs before you commit</h2>
+      <p>Not ready to talk to anyone yet? Smart. This 40-page guide walks you through the three possible paths, repair, replacement, or an insurance claim, and shows you how to follow the evidence to the right one.</p>
       <ul class="book-pts">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>What to do in the first 72 hours after a storm, safely from the ground</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>How the claim process really works, from filing to the adjuster meeting to depreciation</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>A practical framework for the repair versus replacement decision</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>What has to happen to your solar panels when the roof underneath them is replaced</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>How to tell whether a repair, a replacement, or a claim actually fits your roof</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>What a complete inspection covers, from shingles and flashing to decking and the attic</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>The insurance path explained, and when a claim does not belong in the conversation</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Roofing with solar, how to choose a contractor, and a homeowner workbook</li>
       </ul>
-      <!-- EBOOK DOWNLOAD: point this button at the hosted PDF (or keep it opening the capture form) once the e-book file is uploaded -->
-      <a class="btn btn-red" href="#quiz" onclick="startQuiz('options')">Get the Free Guide</a>
+      <a class="btn btn-red" href="repair-replace-or-file-a-claim.pdf" target="_blank" rel="noopener">Get the Free Guide (PDF)</a>
       <div class="book-note">No obligation. The guide is educational and yours to keep.</div>
     </div>
   </div>
@@ -692,7 +697,7 @@ const BRANCH_META = {
   options:{label:'Comparing Options',flag:'flag-options',acc:'acc-options',
            title:'A practical options consultation + the free guide',
            copy:"Based on what you told us, the right next step is a practical options consultation. No sales theater, just a clear walk through the materials, warranties, and cost questions that actually matter for a Central Texas roof, plus the free homeowner guide so you can study everything at your own pace.",
-           points:['Side-by-side look at shingles, impact-resistant options, metal and tile','What material, workmanship and storm warranties really cover','Financing and deductible questions answered in plain English','The free guide: Before You File, yours to keep']},
+           points:['Side-by-side look at shingles, impact-resistant options, metal and tile','What material, workmanship and storm warranties really cover','Financing and deductible questions answered in plain English','The free guide: Repair, Replace or File a Claim?, yours to keep']},
 };
 
 const COMMON_QS = [
@@ -886,7 +891,7 @@ function renderConfirm(){
     + '<div class="oc-title">You’re all set</div>'
     + '<div class="oc-copy" style="max-width:520px;margin:0 auto 10px">Your request for <b>'+m.title.toLowerCase()+'</b> is in. You’ll get a confirmation right away and a fast follow-up to get it scheduled. If this is urgent, don’t wait on us:</div>'
     + '<div style="margin:22px 0 8px"><a class="btn btn-navy" href="tel:8302286123">Call 830-228-6123 Now</a></div>'
-    + '<div class="q-note" style="margin-top:16px">Want the free guide while you wait? <a href="#guide" style="color:var(--blue-2);font-weight:700">Get Before You File</a></div>'
+    + '<div class="q-note" style="margin-top:16px">Want the free guide while you wait? <a href="repair-replace-or-file-a-claim.pdf" target="_blank" rel="noopener" style="color:var(--blue-2);font-weight:700">Download Repair, Replace or File a Claim?</a></div>'
     + '<div style="margin-top:26px"><button class="q-back" onclick="startQuiz()" style="margin:0 auto">Start over</button></div>'
     + '</div>';
 }
