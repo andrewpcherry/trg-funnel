@@ -178,6 +178,32 @@ section.tight{padding:64px 0}
 @media(max-width:920px){.cards-5{grid-template-columns:1fr 1fr}}
 @media(max-width:600px){.cards-5{grid-template-columns:1fr}}
 
+/* ---------- reviews marquee ---------- */
+.rev-sec{padding:56px 0;background:#fff;border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden}
+.rev-head{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:30px;flex-wrap:wrap;text-align:center}
+.rev-head .g{display:flex;align-items:center;gap:8px;font-weight:800;font-size:15px;color:var(--ink)}
+.rev-head .g svg{width:22px;height:22px}
+.rev-head .stars{display:flex;gap:2px}
+.rev-head .stars svg{width:18px;height:18px;fill:#f5b301}
+.rev-head .sub{font-size:13.5px;color:var(--muted);font-weight:600}
+.rev-marquee{position:relative}
+.rev-marquee::before,.rev-marquee::after{content:"";position:absolute;top:0;bottom:0;width:90px;z-index:2;pointer-events:none}
+.rev-marquee::before{left:0;background:linear-gradient(90deg,#fff,transparent)}
+.rev-marquee::after{right:0;background:linear-gradient(270deg,#fff,transparent)}
+.rev-track{display:flex;gap:22px;width:max-content;animation:revscroll 45s linear infinite}
+.rev-track:hover{animation-play-state:paused}
+@keyframes revscroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.rev-card{width:380px;flex:none;background:#fff;border:1px solid var(--border);border-radius:14px;padding:22px 24px;box-shadow:var(--shadow-sm)}
+.rev-card .stars{display:flex;gap:2px;margin-bottom:12px}
+.rev-card .stars svg{width:16px;height:16px;fill:#f5b301}
+.rev-card p{font-size:14.5px;color:var(--ink);margin-bottom:14px}
+.rev-card .who{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.rev-card .who b{font-size:13.5px}
+.rev-card .who span{font-size:12px;color:var(--muted)}
+.rev-card .gtag{display:flex;align-items:center;gap:6px;font-size:11.5px;font-weight:700;color:var(--muted)}
+.rev-card .gtag svg{width:14px;height:14px}
+@media(max-width:520px){.rev-card{width:300px}}
+
 /* ---------- difference table ---------- */
 .tbl-wrap{overflow-x:auto;border-radius:var(--radius);box-shadow:var(--shadow-md);border:1px solid var(--border)}
 table.cmp{width:100%;border-collapse:collapse;background:#fff;min-width:640px}
@@ -459,6 +485,29 @@ footer .legal{margin-top:10px;font-size:12px;line-height:1.7}
     </div>
   </div>
 </section>
+
+<!-- ============ REVIEWS MARQUEE (real reviews from txroofguardians.com/reviews) ============ -->
+<div class="rev-sec">
+  <div class="rev-head">
+    <span class="g">
+      <svg viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+      5.0 on Google
+    </span>
+    <span class="stars">
+      <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.2 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.2 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.2 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.2 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.2 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg>
+    </span>
+    <span class="sub">56 reviews from homeowners across San Antonio, Austin &amp; Central Texas</span>
+  </div>
+  <div class="rev-marquee">
+    <div class="rev-track" id="revTrack">
+      <!-- review set (duplicated by JS for the seamless loop) -->
+    </div>
+  </div>
+</div>
 
 <!-- ============ DIFFERENCE TABLE ============ -->
 <section>
@@ -841,6 +890,29 @@ function renderConfirm(){
     + '<div style="margin-top:26px"><button class="q-back" onclick="startQuiz()" style="margin:0 auto">Start over</button></div>'
     + '</div>';
 }
+
+/* =====================================================
+   REVIEWS MARQUEE
+   Real Google reviews from the Texas Roof Guardians
+   Google Business Profile (5.0, 56 reviews), excerpted
+   at sentence boundaries.
+===================================================== */
+const REVIEWS = [
+  {n:'Rei Lynn', t:"They did a phenomenal job with my roof! We had some branches fall a few months ago and put a couple small holes in the shingles. Not only were they efficient and polite, they cleaned up very well! Overall 10/10. Great price, great team, great work."},
+  {n:'Keith Gonzales', t:"Used Texas Roof Guardians for my roof replacement. From the initial estimates to the final cleanup, Jasper kept me updated with phone calls and texts. He even checks in with me to make sure everything is still good."},
+  {n:'SJ Osborne', t:"Jasper and Texas Roof Guardians are the best roofers in San Antonio hands down. They did amazing work for us and worked to help us get paid fairly through Allstate."},
+  {n:'Andrew & Annabeth Istvan', t:"Huge shoutout to the team at Texas Roof Guardians! I was worried about the damage after the recent storms, but they made the process so easy. They didn't just settle for the first estimate the insurance company gave."},
+  {n:'CM', t:"I really can't thank Carlos enough for going the extra mile on my roof insurance claim. After a big wind storm messed up my roof, the insurance company kept dragging their feet and said it didn't qualify for a wind claim."},
+  {n:'Alynka Ramos', t:"A raccoon made a hole near my chimney, but Mauricio helped me fix it. I hope to have my entire roof done by this company soon; they seem fair and honest."},
+  {n:'Alejandro Garcia', t:"Maurice, thank you for everything. I'm very happy with the work, I loved the result!"},
+];
+(function renderReviews(){
+  const star = '<svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.2 5.8 20.9l1.6-7L2 9.2l7.1-.6L12 2z"/></svg>';
+  const gicon = '<svg viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>';
+  let card = r => '<div class="rev-card"><div class="stars">'+star.repeat(5)+'</div><p>&ldquo;'+r.t+'&rdquo;</p><div class="who"><b>'+r.n+'</b><span class="gtag">'+gicon+'Google review</span></div></div>';
+  const set = REVIEWS.map(card).join('');
+  document.getElementById('revTrack').innerHTML = set + set; /* duplicated for seamless loop */
+})();
 
 /* initial render */
 startQuizInit();
