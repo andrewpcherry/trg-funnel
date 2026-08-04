@@ -1,0 +1,1617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>RequityAI x Texas Roof Guardians · Growth Program Agreement</title>
+<meta name="description" content="Custom growth program agreement for Texas Roof Guardians: ChatGPT Ads, Meta demand creation, and a compliant review engine, built and managed by RequityAI.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d1620;
+    --bg-elev: #131e2a;
+    --surface: #1a2632;
+    --surface-2: #1f2d3c;
+    --border: #2a3744;
+    --orange: #ff6b35;
+    --orange-2: #ff8a5e;
+    --orange-soft: rgba(255, 107, 53, 0.15);
+    --orange-glow: rgba(255, 107, 53, 0.45);
+    --guardian: #024e7c;
+    --text: #ffffff;
+    --text-muted: #cdd5de;
+    --text-dim: #9aa5b1;
+    --green: #4ade80;
+    --red: #ef4444;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--bg); color: var(--text);
+    line-height: 1.55; overflow-x: hidden;
+  }
+  .mono { font-family: 'JetBrains Mono', monospace; }
+
+  .topbar {
+    position: fixed; top: 0; left: 0; right: 0;
+    height: 44px; background: rgba(13, 22, 32, 0.92);
+    backdrop-filter: blur(8px); border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 24px; z-index: 100;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted);
+  }
+  .topbar .brand { color: var(--orange); font-weight: 600; }
+  .topbar .meta { display: flex; gap: 24px; }
+  .section-nav {
+    position: fixed; right: 24px; top: 50%; transform: translateY(-50%);
+    z-index: 90; display: flex; flex-direction: column; gap: 10px;
+  }
+  .section-nav a {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--border); border: 1px solid var(--border);
+    display: block; transition: all 0.2s; position: relative;
+  }
+  .section-nav a.active { background: var(--orange); border-color: var(--orange); box-shadow: 0 0 12px var(--orange-glow); }
+  .section-nav a:hover { background: var(--orange); }
+  .section-nav a span {
+    position: absolute; right: 22px; top: 50%; transform: translateY(-50%);
+    background: var(--surface); border: 1px solid var(--border); color: var(--text);
+    padding: 4px 10px; border-radius: 4px;
+    font-family: 'JetBrains Mono', monospace; font-size: 10px; white-space: nowrap;
+    opacity: 0; pointer-events: none; transition: opacity 0.2s;
+    letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  .section-nav a:hover span { opacity: 1; }
+
+  section {
+    min-height: 100vh; padding: 100px 64px 64px;
+    position: relative; display: flex; flex-direction: column; justify-content: center;
+    border-bottom: 1px solid var(--border);
+  }
+  section.auto-h { min-height: auto; }
+  .grid-bg {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,107,53,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,107,53,0.04) 1px, transparent 1px);
+    background-size: 80px 80px; pointer-events: none;
+  }
+  .crosshairs::before, .crosshairs::after {
+    content: '+'; position: absolute; color: var(--orange);
+    font-family: 'JetBrains Mono', monospace; font-size: 24px; line-height: 1;
+  }
+  .crosshairs::before { top: 60px; left: 24px; }
+  .crosshairs::after { bottom: 24px; right: 24px; }
+
+  .container { max-width: 1400px; margin: 0 auto; width: 100%; position: relative; z-index: 2; }
+
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--orange); margin-bottom: 16px; display: flex; align-items: center; gap: 12px;
+  }
+  .section-label::before { content: ''; width: 32px; height: 2px; background: var(--orange); }
+
+  h1, h2 { font-weight: 900; letter-spacing: -0.02em; line-height: 1.05; }
+  h1 { font-size: clamp(2.4rem, 5.5vw, 4.8rem); }
+  h2 { font-size: clamp(1.8rem, 4vw, 3.4rem); margin-bottom: 18px; }
+  h3 { font-size: 1.3rem; font-weight: 800; }
+  .accent { color: var(--orange); }
+  .lead { font-size: clamp(1rem, 1.3vw, 1.18rem); color: var(--text-muted); max-width: 820px; line-height: 1.65; margin-top: 16px; }
+  p { color: var(--text-muted); }
+
+  .hero-callout {
+    margin-top: 32px;
+    background: var(--orange-soft);
+    border-left: 3px solid var(--orange);
+    padding: 20px 24px;
+    font-size: clamp(1.05rem, 1.6vw, 1.35rem);
+    font-weight: 700; color: var(--text);
+    max-width: 920px;
+  }
+
+  .cta-row { margin-top: 36px; display: flex; flex-wrap: wrap; gap: 14px; }
+  .btn-primary {
+    background: var(--orange); color: white; border: none;
+    padding: 16px 32px; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 0.98rem;
+    letter-spacing: 0.04em; text-transform: uppercase; cursor: pointer;
+    box-shadow: 0 0 24px var(--orange-glow);
+    transition: transform 0.15s, box-shadow 0.15s, opacity 0.15s;
+    text-decoration: none; display: inline-block;
+  }
+  .btn-primary:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 0 36px var(--orange-glow); }
+  .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; box-shadow: none; }
+  .btn-secondary {
+    background: transparent; color: var(--text); border: 1px solid var(--border);
+    padding: 16px 28px; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.98rem;
+    letter-spacing: 0.04em; text-transform: uppercase; cursor: pointer;
+    transition: border-color 0.15s, color 0.15s;
+    text-decoration: none; display: inline-block;
+  }
+  .btn-secondary:hover { border-color: var(--orange); color: var(--orange); }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 32px; }
+  .panel {
+    background: var(--surface); border: 1px solid var(--border);
+    padding: 28px; position: relative;
+  }
+  .panel.old { opacity: 0.92; }
+  .panel.new { border-color: var(--orange); box-shadow: 0 0 0 1px rgba(255,107,53,0.15); }
+  .panel .tag {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--text-dim); margin-bottom: 8px;
+  }
+  .panel.new .tag { color: var(--orange); }
+  .panel h3 { margin-bottom: 14px; }
+  .panel ul { list-style: none; margin-top: 14px; }
+  .panel ul li {
+    padding: 10px 0; border-bottom: 1px solid var(--border);
+    display: flex; align-items: flex-start; gap: 10px; color: var(--text-muted);
+  }
+  .panel ul li:last-child { border-bottom: none; }
+  .panel ul li::before {
+    content: '+'; color: var(--orange);
+    font-family: 'JetBrains Mono', monospace; font-weight: 700; line-height: 1.55;
+  }
+
+  .callout-bar {
+    margin-top: 32px; background: var(--orange-soft);
+    border-left: 3px solid var(--orange); padding: 18px 22px;
+    font-weight: 600; color: var(--text);
+  }
+  .callout-bar .lbl {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--orange); margin-bottom: 6px; font-weight: 700;
+  }
+
+  .stack-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 36px; }
+  .stack-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-top: 3px solid var(--orange); padding: 26px;
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+  }
+  .stack-card:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(0,0,0,0.35); }
+  .stack-card .ch {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    letter-spacing: 0.15em; text-transform: uppercase; color: var(--orange); margin-bottom: 8px;
+  }
+  .stack-card h3 { margin-bottom: 10px; }
+  .stack-card .stage {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    color: var(--text-dim); letter-spacing: 0.1em; text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  /* Asset cards (already built) */
+  .asset-grid { margin-top: 32px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  .asset-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-left: 3px solid var(--green); padding: 24px;
+  }
+  .asset-card .st {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    letter-spacing: 0.15em; text-transform: uppercase; color: var(--green); margin-bottom: 8px;
+  }
+  .asset-card h4 { font-size: 1.05rem; font-weight: 800; margin-bottom: 8px; }
+  .asset-card p { font-size: 0.94rem; }
+  .asset-card a { color: var(--orange); text-decoration: none; font-size: 0.9rem; word-break: break-all; }
+  .asset-card a:hover { text-decoration: underline; }
+
+  .build-grid {
+    margin-top: 32px;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
+  }
+  .build-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-left: 3px solid var(--orange);
+    padding: 18px; min-height: 88px;
+  }
+  .build-card .n {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    letter-spacing: 0.15em; color: var(--orange); margin-bottom: 6px;
+  }
+  .build-card .t { font-weight: 700; font-size: 0.98rem; }
+  .build-highlight {
+    grid-column: 1 / -1;
+    background: var(--orange-soft); border-left: 3px solid var(--orange);
+    padding: 20px 24px; margin-top: 8px;
+  }
+  .build-highlight .lbl {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    letter-spacing: 0.15em; text-transform: uppercase; color: var(--orange); margin-bottom: 6px;
+  }
+
+  .intent-grid { margin-top: 32px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .intent-card {
+    background: var(--surface); border: 1px solid var(--border);
+    padding: 24px; transition: transform 0.2s, border-color 0.2s;
+  }
+  .intent-card:hover { transform: translateY(-2px); border-color: var(--orange); }
+  .intent-card h4 {
+    font-size: 1.05rem; font-weight: 800; margin-bottom: 12px;
+  }
+  .intent-card .qlbl, .intent-card .albl {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange);
+    margin: 14px 0 6px;
+  }
+  .intent-card ul { list-style: none; }
+  .intent-card ul li {
+    color: var(--text-muted); font-size: 0.92rem; padding: 4px 0; padding-left: 14px; position: relative;
+  }
+  .intent-card ul li::before {
+    content: '+'; position: absolute; left: 0; color: var(--orange);
+  }
+  .intent-card .ad { color: var(--text); font-size: 0.95rem; line-height: 1.5; }
+
+  .pricing-2 { margin-top: 36px; display: grid; grid-template-columns: 1fr; gap: 24px; align-items: stretch; }
+  .price-card {
+    background: var(--surface); border: 1px solid var(--border); padding: 32px 28px;
+    position: relative; transition: transform 0.2s, box-shadow 0.2s;
+    display: flex; flex-direction: column; max-width: 760px; margin: 0 auto; width: 100%;
+  }
+  .price-card:hover { transform: translateY(-3px); }
+  .price-card.founding {
+    border-color: var(--orange);
+    background: linear-gradient(180deg, rgba(255,107,53,0.08), var(--surface));
+    box-shadow: 0 0 0 1px rgba(255,107,53,0.25), 0 0 48px rgba(255,107,53,0.18);
+  }
+  .price-card .badge {
+    position: absolute; top: -12px; left: 24px;
+    background: var(--orange); color: white;
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    padding: 5px 12px; font-weight: 700;
+  }
+  .price-card h3 { font-size: 1.5rem; margin: 6px 0 4px; }
+  .price-card .sub { color: var(--text-dim); font-size: 0.92rem; margin-bottom: 22px; }
+  .price-item { padding: 16px 0; border-top: 1px solid var(--border); }
+  .price-item .pname {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange); margin-bottom: 6px;
+  }
+  .price-item .pamt { font-size: 1.5rem; font-weight: 900; }
+  .price-item .pmeta { color: var(--text-dim); font-size: 0.88rem; margin-top: 4px; line-height: 1.5; }
+  .price-callout {
+    margin-top: 18px; background: var(--orange-soft); border-left: 3px solid var(--orange);
+    padding: 12px 16px; font-size: 0.92rem; color: var(--text);
+  }
+  .custom-terms {
+    margin-top: 28px;
+    background: linear-gradient(135deg, rgba(255,107,53,0.12), rgba(255,107,53,0.04));
+    border: 2px solid var(--orange);
+    border-left-width: 6px;
+    padding: 22px 26px;
+    color: var(--text);
+    font-size: 1.02rem;
+    line-height: 1.6;
+    box-shadow: 0 10px 30px -12px rgba(255,107,53,0.35);
+  }
+  .custom-terms .ct-lbl {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--orange); margin-bottom: 10px; font-weight: 700;
+  }
+  .custom-terms .ct-body { white-space: pre-wrap; }
+
+  .score-grid { margin-top: 28px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+  .score-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-top: 2px solid var(--orange);
+    padding: 16px 14px;
+  }
+  .score-card .n {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--orange);
+    letter-spacing: 0.14em; margin-bottom: 6px;
+  }
+  .score-card .t { font-weight: 700; font-size: 0.95rem; }
+
+  .check-card {
+    margin-top: 28px; background: var(--surface); border: 1px solid var(--border); padding: 28px;
+  }
+  .check-card ul { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 8px 24px; margin-top: 8px; }
+  .check-card ul li {
+    padding: 8px 0 8px 24px; position: relative; color: var(--text-muted); font-size: 0.96rem;
+  }
+  .check-card ul li::before {
+    content: '✓'; position: absolute; left: 0; top: 8px;
+    color: var(--orange); font-weight: 900;
+  }
+
+  .phase-row { margin-top: 32px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .phase-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-top: 3px solid var(--orange);
+    padding: 24px;
+    opacity: 0; transform: translateY(14px);
+  }
+  .phase-card.in { opacity: 1; transform: translateY(0); transition: opacity 0.55s, transform 0.55s; }
+  .phase-card .n {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--orange);
+    letter-spacing: 0.18em; margin-bottom: 6px;
+  }
+  .phase-card h4 { font-size: 1.1rem; font-weight: 800; margin-bottom: 10px; }
+
+  /* Launch dates band */
+  .date-band { margin-top: 32px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .date-card {
+    background: var(--bg-elev); border: 1px solid var(--border);
+    border-top: 3px solid var(--orange); padding: 24px; text-align: left;
+  }
+  .date-card .dl {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    letter-spacing: 0.16em; text-transform: uppercase; color: var(--orange); margin-bottom: 8px;
+  }
+  .date-card .dv { font-size: 1.25rem; font-weight: 900; }
+  .date-card .dm { color: var(--text-dim); font-size: 0.9rem; margin-top: 6px; }
+
+  #agreement-divider {
+    padding: 96px 64px 32px; text-align: left; border-top: 1px solid var(--border);
+  }
+  #agreement-divider .divider-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--orange); margin-bottom: 14px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  #agreement-divider .divider-label::before { content: ''; width: 32px; height: 2px; background: var(--orange); }
+  .agreement-section { padding: 56px 64px; min-height: auto; justify-content: flex-start; }
+  .agreement-section .container { max-width: 1100px; }
+  .sow-card { background: var(--surface); border: 1px solid var(--border); padding: 32px; margin-top: 24px; }
+  .sow-card h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 12px; }
+  .sow-card p, .sow-card li { color: var(--text-muted); line-height: 1.65; font-size: 0.98rem; }
+  .sow-card p + p { margin-top: 12px; }
+
+  .clause {
+    background: var(--surface); border: 1px solid var(--border);
+    border-left: 3px solid var(--orange);
+    margin-top: 12px; padding: 22px 28px;
+  }
+  .clause .clause-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.15em; color: var(--orange);
+    margin-right: 12px;
+  }
+  .clause .clause-title { font-weight: 800; font-size: 1.05rem; }
+  .clause .clause-body { margin-top: 14px; color: var(--text-muted); line-height: 1.7; }
+  .clause .clause-body p { margin-top: 12px; }
+  .clause .clause-body p:first-child { margin-top: 0; }
+  .clause .clause-body ul { list-style: none; margin-top: 10px; }
+  .clause .clause-body ul li {
+    padding: 5px 0 5px 18px; position: relative; font-size: 0.95rem;
+  }
+  .clause .clause-body ul li::before { content: '+'; position: absolute; left: 0; color: var(--orange); }
+
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 8px; }
+  .form-field { display: flex; flex-direction: column; gap: 6px; }
+  .form-field.full { grid-column: 1 / -1; }
+  .form-field label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .form-field label .req { color: var(--orange); margin-left: 4px; }
+  .form-field input, .form-field select, .form-field textarea {
+    background: var(--bg); border: 1px solid var(--border); color: var(--text);
+    font-family: 'Inter', sans-serif; font-size: 0.98rem;
+    padding: 12px 14px; width: 100%;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .form-field input:focus, .form-field select:focus, .form-field textarea:focus {
+    outline: none; border-color: var(--orange);
+    box-shadow: 0 0 0 3px var(--orange-soft);
+  }
+  .provider-block {
+    background: var(--bg-elev); border: 1px solid var(--border);
+    padding: 24px 28px; margin-top: 24px;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px;
+  }
+  .provider-block .pf-label {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    letter-spacing: 0.15em; text-transform: uppercase; color: var(--orange); margin-bottom: 4px;
+  }
+  .provider-block .pf-value { font-weight: 600; font-size: 0.98rem; }
+  .agree-row {
+    margin-top: 24px; padding: 20px 24px;
+    background: var(--orange-soft); border-left: 3px solid var(--orange);
+    display: flex; align-items: flex-start; gap: 14px;
+  }
+  .agree-row input[type="checkbox"] {
+    appearance: none; width: 22px; height: 22px;
+    background: var(--bg); border: 1px solid var(--orange);
+    cursor: pointer; flex-shrink: 0; margin-top: 2px; position: relative;
+  }
+  .agree-row input[type="checkbox"]:checked { background: var(--orange); }
+  .agree-row input[type="checkbox"]:checked::after {
+    content: '✓'; position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-weight: 900; font-size: 14px;
+  }
+  .agree-row label { font-size: 0.95rem; line-height: 1.55; cursor: pointer; color: var(--text); }
+
+  .sig-stage { margin-top: 24px; background: var(--surface); border: 1px solid var(--border); padding: 24px; }
+  .sig-stage h4 {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    letter-spacing: 0.18em; text-transform: uppercase; color: var(--orange); margin-bottom: 12px;
+  }
+  .sig-canvas-wrap {
+    background: var(--bg); border: 1px dashed var(--border);
+    height: 180px; position: relative; margin-top: 8px;
+  }
+  .sig-canvas-wrap canvas { width: 100%; height: 100%; display: block; cursor: crosshair; touch-action: none; }
+  .sig-canvas-wrap .sig-placeholder {
+    position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+    color: var(--text-muted); font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+    pointer-events: none; opacity: 0.5;
+  }
+  .sig-tools { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; gap: 12px; }
+  .sig-tools .helper { font-size: 0.78rem; color: var(--text-muted); }
+  .btn-clear {
+    background: transparent; border: 1px solid var(--border); color: var(--text-muted);
+    padding: 6px 12px; cursor: pointer;
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    letter-spacing: 0.15em; text-transform: uppercase; transition: all 0.15s;
+  }
+  .btn-clear:hover { border-color: var(--orange); color: var(--orange); }
+  .submit-row { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 14px; }
+  .submit-status { margin-top: 18px; font-size: 0.92rem; min-height: 22px; }
+  .submit-status.error { color: var(--red); }
+  .submit-status.success {
+    color: var(--green); background: rgba(74,222,128,0.08);
+    border-left: 3px solid var(--green); padding: 14px 18px; margin-top: 18px;
+  }
+
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 1100px) {
+    .build-grid { grid-template-columns: 1fr 1fr; }
+    .intent-grid { grid-template-columns: 1fr 1fr; }
+    .score-grid { grid-template-columns: 1fr 1fr 1fr; }
+    .section-nav { display: none; }
+  }
+  @media (max-width: 760px) {
+    section { padding: 80px 20px 48px; }
+    #agreement-divider { padding: 64px 20px 24px; }
+    .agreement-section { padding: 32px 20px; }
+    .two-col, .stack-3, .phase-row, .pricing-2, .asset-grid, .date-band { grid-template-columns: 1fr; }
+    .build-grid, .intent-grid, .score-grid, .check-card ul { grid-template-columns: 1fr; }
+    .form-grid { grid-template-columns: 1fr; }
+    .provider-block { grid-template-columns: 1fr; }
+  }
+  @media print {
+    .topbar, .section-nav, .submit-row, .btn-clear, .cta-row { display: none !important; }
+    body { background: white !important; color: black !important; }
+    section { min-height: auto !important; padding: 24px !important; page-break-inside: avoid; }
+    .panel, .stack-card, .build-card, .intent-card, .price-card, .phase-card, .score-card, .sow-card, .clause, .provider-block, .sig-stage, .asset-card, .date-card, .check-card {
+      background: white !important; color: black !important; border-color: #ccc !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand">REQUITYAI // TEXAS ROOF GUARDIANS</div>
+  <div class="meta">
+    <span>GROWTH PROGRAM // V1.0</span>
+    <span>CONFIDENTIAL</span>
+  </div>
+</div>
+
+<nav class="section-nav">
+  <a href="#hero"><span>01 Overview</span></a>
+  <a href="#built"><span>02 Already Built</span></a>
+  <a href="#system"><span>03 The System</span></a>
+  <a href="#chatgpt"><span>04 ChatGPT Ads</span></a>
+  <a href="#meta"><span>05 Meta Program</span></a>
+  <a href="#reviews"><span>06 Review Engine</span></a>
+  <a href="#infrastructure"><span>07 Infrastructure</span></a>
+  <a href="#scorecard"><span>08 Scorecard</span></a>
+  <a href="#timeline"><span>09 Timeline</span></a>
+  <a href="#pricing"><span>10 Investment</span></a>
+  <a href="#scope"><span>11 Scope</span></a>
+  <a href="#responsibilities"><span>12 Responsibilities</span></a>
+  <a href="#sow"><span>13 SOW</span></a>
+  <a href="#client-info"><span>14 Client Info</span></a>
+  <a href="#provider-info"><span>15 Provider</span></a>
+  <a href="#signature"><span>16 Signature</span></a>
+</nav>
+
+<!-- 01 HERO -->
+<section id="hero" class="crosshairs">
+  <div class="grid-bg"></div>
+  <div class="container">
+    <div class="section-label mono">01 // Prepared for Texas Roof Guardians</div>
+    <h1>The <span class="accent">Texas Roof Guardians</span> Growth Program.</h1>
+    <p class="lead">A custom acquisition program built for Texas Roof Guardians: ChatGPT Ads and Meta working together on the front end, a compliant review engine building trust behind them, and the funnel, guide, and tracking already built and live.</p>
+    <p class="lead">This agreement covers the full 90-day program we discussed: the ChatGPT Ads campaigns, the Meta demand and retargeting program, and the automated review system, all feeding one funnel and one lead path.</p>
+
+    <div class="cta-row">
+      <a href="#signature" class="btn-primary">Review and Sign</a>
+      <a href="#built" class="btn-secondary">See What's Already Built</a>
+    </div>
+
+    <div class="hero-callout">Three engines, one system: ChatGPT Ads capture homeowners while they are deciding, Meta builds familiarity and brings them back, and the review engine turns every finished job into public proof. Everything lands on the funnel that is already live.</div>
+  </div>
+</section>
+
+<!-- 02 ALREADY BUILT -->
+<section id="built" class="crosshairs">
+  <div class="grid-bg"></div>
+  <div class="container">
+    <div class="section-label mono">02 // Built Before the Paperwork</div>
+    <h2>The front end is <span class="accent">already built</span>.</h2>
+    <p class="lead">Most agencies sell a plan and then start building. Your funnel, your homeowner guide, and both campaign walkthroughs were built first, in your brand, with your real reviews and credentials, so you could judge the work before signing anything.</p>
+
+    <div class="asset-grid reveal">
+      <div class="asset-card">
+        <div class="st">Live now</div>
+        <h4>The Texas Roof Guardians Funnel</h4>
+        <p>A branching, self-qualifying funnel in your brand colors covering aging roofs, roof plus solar, insurance claims, storm damage, and comparing options. Built with your real Google reviews and trust marks.</p>
+        <a href="https://andrewpcherry.github.io/trg-funnel/" target="_blank" rel="noopener">andrewpcherry.github.io/trg-funnel</a>
+      </div>
+      <div class="asset-card">
+        <div class="st">Live now</div>
+        <h4>The Homeowner Guide</h4>
+        <p>"Repair, Replace or File a Claim?", a 40-page homeowner guide written for your market, hosted in the funnel and ready to work as your lead magnet across both ad channels.</p>
+        <a href="https://andrewpcherry.github.io/trg-funnel/repair-replace-or-file-a-claim.pdf" target="_blank" rel="noopener">Download the guide</a>
+      </div>
+      <div class="asset-card">
+        <div class="st">Live now</div>
+        <h4>ChatGPT Ads Walkthrough</h4>
+        <p>A step-by-step visual walkthrough of how a homeowner's question becomes a matched ad, a funnel branch, and a qualified lead for your team.</p>
+        <a href="https://andrewpcherry.github.io/trg-funnel/chatgpt-ads-walkthrough.html" target="_blank" rel="noopener">View the walkthrough</a>
+      </div>
+      <div class="asset-card">
+        <div class="st">Live now</div>
+        <h4>Meta Ads Walkthrough</h4>
+        <p>The Facebook and Instagram side of the system: educational content, retargeting, and lead capture, shown end to end for your market.</p>
+        <a href="https://andrewpcherry.github.io/trg-funnel/facebook-ads-walkthrough.html" target="_blank" rel="noopener">View the walkthrough</a>
+      </div>
+    </div>
+
+    <div class="callout-bar reveal">
+      <div class="lbl">What signing unlocks</div>
+      Signing switches these assets on: the lead form gets wired to your lead flow with instant alerts, tracking and attribution go live, the campaigns get built in your ad accounts, and the review engine starts running.
+    </div>
+  </div>
+</section>
+
+<!-- 03 THE SYSTEM -->
+<section id="system" class="crosshairs">
+  <div class="grid-bg"></div>
+  <div class="container">
+    <div class="section-label mono">03 // The System</div>
+    <h2>Three engines. <span class="accent">One lead path.</span></h2>
+    <p class="lead">Each channel does a different job at a different moment. Meta builds familiarity before the homeowner has a problem. ChatGPT Ads reach them while they are actively working out what to do. Reviews close the trust gap when they compare you to everyone else. All of it lands on the same funnel and the same lead path.</p>
+
+    <div class="stack-3 reveal">
+      <div class="stack-card">
+        <div class="ch">Engine 01</div>
+        <h3>ChatGPT Ads</h3>
+        <div class="stage">Decision Capture</div>
+        <p>Sponsored placements below relevant ChatGPT conversations, matched to the questions homeowners ask about leaks, storms, claims, aging roofs, and solar. Reaches them mid-decision, before they call three competitors off Google.</p>
+      </div>
+      <div class="stack-card">
+        <div class="ch">Engine 02</div>
+        <h3>Meta Program</h3>
+        <div class="stage">Demand Creation</div>
+        <p>Local, owner-led educational content on Facebook and Instagram: aging roof signals, claims education, solar coordination, project proof. Builds the retargeting pool and keeps Texas Roof Guardians the familiar name in your market.</p>
+      </div>
+      <div class="stack-card">
+        <div class="ch">Engine 03</div>
+        <h3>Review Engine</h3>
+        <div class="stage">Trust and Proof</div>
+        <p>An automated, policy-compliant review system: every eligible completed customer gets the same review invitation, every new review gets a factual owner-voice response, and your review profile grows in volume and recency month after month.</p>
+      </div>
+    </div>
+
+    <div class="callout-bar reveal">
+      <div class="lbl">Why together</div>
+      Run separately, each channel pays for its own learning. Run together, they share one funnel, one tracking layer, one retargeting pool, and one growing base of proof. The system compounds; isolated campaigns don't.
+    </div>
+  </div>
+</section>
+
+<!-- 04 CHATGPT ADS -->
+<section id="chatgpt" class="crosshairs">
+  <div class="grid-bg"></div>
+  <div class="container">
+    <div class="section-label mono">04 // Engine 01</div>
+    <h2>ChatGPT Ads: reach the homeowner <span class="accent">mid-decision</span>.</h2>
+    <p class="lead">Homeowners now ask ChatGPT the questions they used to type into Google: is this hail damage, should I file a claim, can this roof be repaired, what does replacement cost. A ChatGPT ad is a clearly labeled sponsored placement shown below relevant conversations. It does not change the answer, and delivery is guided by context, not exact keywords. What it does is put Texas Roof Guardians in front of the homeowner at the exact moment they are reasoning through a roof decision.</p>
+
+    <div class="intent-grid reveal">
+      <div class="intent-card">
+        <h4>01 · Storm and Hail</h4>
+        <div class="qlbl">Homeowner context</div>
+        <ul>
+          <li>Hail damage, wind damage after a storm</li>
+          <li>Should I file a claim?</li>
+          <li>Roof inspection after a storm</li>
+        </ul>
+        <div class="albl">Destination</div>
+        <p class="ad">Storm branch of your funnel: document first, then a no-pressure inspection.</p>
+      </div>
+      <div class="intent-card">
+        <h4>02 · Leak Diagnosis</h4>
+        <div class="qlbl">Homeowner context</div>
+        <ul>
+          <li>Ceiling stain, water coming through</li>
+          <li>Finding the source of a leak</li>
+          <li>Flashing, missing shingles</li>
+        </ul>
+        <div class="albl">Destination</div>
+        <p class="ad">Leak decision path: what it may mean and when repair, replacement, or emergency help fits.</p>
+      </div>
+      <div class="intent-card">
+        <h4>03 · Repair vs Replace</h4>
+        <div class="qlbl">Homeowner context</div>
+        <ul>
+          <li>Roof age, repeated repairs</li>
+          <li>Replacement timing and cost</li>
+          <li>Second opinion on a quote</li>
+        </ul>
+        <div class="albl">Destination</div>
+        <p class="ad">Aging roof branch: repair or replace with evidence, plus the homeowner guide.</p>
+      </div>
+      <div class="intent-card">
+        <h4>04 · Insurance Claims</h4>
+        <div class="qlbl">Homeowner context</div>
+        <ul>
+          <li>Adjuster meeting, carrier estimate</li>
+          <li>Supplements, denials, reinspection</li>
+          <li>ACV, RCV, depreciation</li>
+        </ul>
+        <div class="albl">Destination</div>
+        <p class="ad">Claim clarity page: documentation and estimate review, without coverage promises.</p>
+      </div>
+      <div class="intent-card">
+        <h4>05 · Materials and Systems</h4>
+        <div class="qlbl">Homeowner context</div>
+        <ul>
+          <li>Class 4, metal vs shingle, tile</li>
+          <li>Warranty and lifespan questions</li>
+          <li>What a full system includes</li>
+        </ul>
+        <div class="albl">Destination</div>
+        <p class="ad">System options page: practical tradeoffs before anyone quotes them.</p>
+      </div>
+      <div class="intent-card">
+        <h4>06 · Roof + Solar</h4>
+        <div class="qlbl">Homeowner context</div>
+        <ul>
+          <li>Reroofing with panels installed</li>
+          <li>Detach and reset</li>
+          <li>Hail on panels</li>
+        </ul>
+        <div class="albl">Destination</div>
+        <p class="ad">Solar branch: one coordinated roof and solar plan, your differentiator.</p>
+      </div>
+    </div>
+
+    <div class="callout-bar reveal">
+      <div class="lbl">Exclusivity, stated honestly</div>
+      While this engagement is active, RequityAI will not run ChatGPT Ads for any other roofing company in your market. That is a commitment about who we work with. No one can promise exclusive ChatGPT inventory, and we won't pretend otherwise.
+    </div>
+  </div>
+</section>
+
+<!-- 05 META PROGRAM -->
+<section id="meta" class="crosshairs">
+  <div class="grid-bg"></div>
+  <div class="container">
+    <div class="section-label mono">05 // Engine 02</div>
+    <h2>Meta: build memory <span class="accent">before the need</span>.</h2>
+    <p class="lead">Nobody plans to need a roofer. When the moment comes, the homeowner calls the name they already trust. The Meta program makes Texas Roof Guardians that name: short, local, owner-led educational content that earns attention without asking for a sale, then retargets the homeowners who engaged.</p>
+
+    <div class="two-col reveal">
+      <div class="panel new">
+        <div class="tag">Campaign lanes</div>
+        <h3>Four lanes, each with a job</h3>
+        <ul>
+          <li>Aging roof: repair vs replace, warning signs, the guide offer. Your evergreen lane, matched to what your best jobs actually are.</li>
+          <li>Roof + solar: detach and reset, warranty, one coordinated plan. The lane no competitor in your market is running.</li>
+          <li>Claims education: what to document, how the process works, calm and non-alarmist.</li>
+          <li>Retargeting: video viewers, engagers, site visitors, and leads not yet booked get proof, FAQ, and a low-pressure next step.</li>
+        </ul>
+      </div>
+      <div class="panel new">
+        <div class="tag">Creative system</div>
+        <h3>Built to be sustainable</h3>
+        <ul>
+          <li>Phone-shot, owner-led video: local, real, and native to the feed. No agency gloss.</li>
+          <li>Batched production: one or two filming sessions produce a week of assets. You never owe five separate shoots.</li>
+          <li>Every asset gets one job: watch, save, download, call, or schedule. Never all five at once.</li>
+          <li>Winners scale on qualified actions and conversion data, not likes.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout-bar reveal">
+      <div class="lbl">Your account, your data</div>
+      Campaigns run in your Meta ad account. You own the account, the audiences, and every lead generated. Ad spend goes directly from you to Meta.
+    </div>
+  </div>
+</section>
+
+<!-- 06 REVIEW ENGINE -->
+<section id="reviews" class="crosshairs">
+  <div class="grid-bg"></div>
+  <div class="container">
+    <div class="section-label mono">06 // Engine 03</div>
+    <h2>The Review Engine: turn finished jobs into <span class="accent">public proof</span>.</h2>
+    <p class="lead">Your 5.0 rating is one of your strongest assets. The problem with reviews at every roofing company is consistency: they get requested when someone remembers, and they stop the week things get busy. The Review Engine automates the whole loop through our platform, so it runs on every job, every time.</p>
+
+    <div class="stack-3 reveal">
+      <div class="stack-card">
+        <div class="ch">Collect</div>
+        <h3>Automated requests</h3>
+        <div class="stage">Every eligible customer</div>
+        <p>When a job completes, the customer automatically receives the same neutral review invitation by text or email. Consistent asks grow review volume and recency, the two signals that matter most.</p>
+      </div>
+      <div class="stack-card">
+        <div class="ch">Respond</div>
+        <h3>Owner-voice responses</h3>
+        <div class="stage">Every new review</div>
+        <p>Every new Google review gets a factual, local, owner-voice response. Active ownership of your profile, without keyword stuffing and without a review sitting unanswered for weeks.</p>
+      </div>
+      <div class="stack-card">
+        <div class="ch">Post</div>
+        <h3>Profile activity</h3>
+        <div class="stage">Ongoing presence</div>
+        <p>Review activity and responses keep your Google profile current and active, so the homeowner comparing three roofers at 9pm sees a company that is visibly alive and accountable.</p>
+      </div>
+    </div>
+
+    <div class="callout-bar reveal">
+      <div class="lbl">Done by the rules</div>
+      Every eligible customer gets the same invitation. A private feedback route is available to everyone, and it never blocks or filters the public review path. No gating, no selective asking, nothing that violates Google's review policies. Real reviews, systematically collected.
+    </div>
+  </div>
+</section>
+
+<!-- 07 INFRASTRUCTURE -->
+<section id="infrastructure" class="crosshairs">
+  <div class="grid-bg"></div>
+  <div class="container">
+    <div class="section-label mono">07 // Under the Hood</div>
+    <h2>The plumbing gets built <span class="accent">before a dollar of ad spend</span>.</h2>
+    <p class="lead">Advertising cannot outperform the response system behind it. Before launch, the whole chain gets wired and tested end to end: page, form, tracking, alerts, and follow-up path, on desktop and mobile.</p>
+
+    <div class="build-grid reveal">
+      <div class="build-card"><div class="n">01</div><div class="t">Funnel lead form wired to your live lead flow</div></div>
+      <div class="build-card"><div class="n">02</div><div class="t">Instant lead alerts to your team the moment a homeowner inquires</div></div>
+      <div class="build-card"><div class="n">03</div><div class="t">Full UTM and source attribution on every inquiry</div></div>
+      <div class="build-card"><div class="n">04</div><div class="t">Conversion tracking on both platforms, including pixel and event setup where available</div></div>
+      <div class="build-card"><div class="n">05</div><div class="t">ChatGPT Ads campaign build across six intent clusters</div></div>
+      <div class="build-card"><div class="n">06</div><div class="t">Meta campaign build across four lanes plus retargeting</div></div>
+      <div class="build-card"><div class="n">07</div><div class="t">Review request automation on job completion</div></div>
+      <div class="build-card"><div class="n">08</div><div class="t">Review response workflow in your voice</div></div>
+      <div class="build-card"><div class="n">09</div><div class="t">Weekly performance review and active optimization</div></div>
+      <div class="build-card"><div class="n">10</div><div class="t">Lead quality scoring on every inquiry</div></div>
+      <div class="build-card"><div class="n">11</div><div class="t">Monthly plain-English reporting on the numbers that matter</div></div>
+      <div class="build-card"><div class="n">12</div><div class="t">End-of-program validation report: continue, scale, or stop, by channel</div></div>
+      <div class="build-highlight">
+        <div class="lbl">The full path</div>
+        Ad click or review click → matched funnel branch → inspection request → instant alert → your team closes → finished job → review request → public proof → the next homeowner trusts you faster.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 SCORECARD -->
+<section id="scorecard" class="crosshairs">
+  <div class="grid-bg"></div>
+  <div class="container">
+    <div class="section-label mono">08 // Performance Scorecard</div>
+    <h2>Measured on <span class="accent">inspection opportunities</span>, not vanity metrics.</h2>
+
+    <div class="score-grid reveal">
+      <div class="score-card"><div class="n">M01</div><div class="t">Funnel conversion rate</div></div>
+      <div class="score-card"><div class="n">M02</div><div class="t">Form completions</div></div>
+      <div class="score-card"><div class="n">M03</div><div class="t">Call requests</div></div>
+      <div class="score-card"><div class="n">M04</div><div class="t">Contact rate</div></div>
+      <div class="score-card"><div class="n">M05</div><div class="t">Qualified inspection requests</div></div>
+      <div class="score-card"><div class="n">M06</div><div class="t">Booked inspections</div></div>
+      <div class="score-card"><div class="n">M07</div><div class="t">Quoted job opportunities</div></div>
+      <div class="score-card"><div class="n">M08</div><div class="t">Review volume and recency</div></div>
+      <div class="score-card"><div class="n">M09</div><div class="t">Cost per qualified inspection, by channel</div></div>
+      <div class="score-card"><div class="n">M10</div><div class="t">Revenue attribution where available</div></div>
+    </div>
+
+    <div class="callout-bar reveal">
+      <div class="lbl">The North Star</div>
+      Cost per qualified, contactable inspection opportunity, by channel. Cheap leads that never pick up are not success, and we will never report them as if they were.
+    </div>
+    <p class="lead reveal">Performance depends on market conditions, platform behavior, targeting availability, ad spend, follow-up speed, and competition. Specific outcomes are not guaranteed, on this or any channel.</p>
+  </div>
+</section>
+
+<!-- 09 TIMELINE -->
+<section id="timeline" class="crosshairs">
+  <div class="grid-bg"></div>
+  <div class="container">
+    <div class="section-label mono">09 // Timeline</div>
+    <h2>From signature to <span class="accent">live campaigns</span> in days, not weeks.</h2>
+    <p class="lead">Because the funnel, guide, and walkthroughs are already built, the setup phase is short. Here is the schedule we agreed:</p>
+
+    <div class="date-band reveal">
+      <div class="date-card">
+        <div class="dl">This week</div>
+        <div class="dv">Agreement signed</div>
+        <div class="dm">Review this page, sign below, and onboarding is locked in.</div>
+      </div>
+      <div class="date-card">
+        <div class="dl">Friday, August 7 · 1:00 pm Central</div>
+        <div class="dv">Onboarding call</div>
+        <div class="dm">Account access, launch market confirmation, lead routing, and creative inputs, all in one call.</div>
+      </div>
+      <div class="date-card">
+        <div class="dl">Monday, August 10</div>
+        <div class="dv">Initial campaigns launch</div>
+        <div class="dm">First campaigns go live, with the full 90-day program running from launch.</div>
+      </div>
+    </div>
+
+    <div class="phase-row">
+      <div class="phase-card">
+        <div class="n">Phase 01 · Days 1 to 30</div>
+        <h4>Launch and Baseline</h4>
+        <p>Campaigns live on both platforms, review engine running, tracking verified end to end. Establish the baseline: what each channel costs, what converts, what quality looks like.</p>
+      </div>
+      <div class="phase-card">
+        <div class="n">Phase 02 · Days 31 to 60</div>
+        <h4>Optimize and Shift</h4>
+        <p>Budget follows evidence. Winning intents and creatives scale, weak paths get cut, retargeting pools reach useful size, and review velocity starts showing on your profile.</p>
+      </div>
+      <div class="phase-card">
+        <div class="n">Phase 03 · Days 61 to 90</div>
+        <h4>Validate and Decide</h4>
+        <p>Full review of lead quality, booked inspections, quoted jobs, and cost per qualified opportunity by channel. You get a clear continue, scale, or stop recommendation, in writing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 PRICING -->
+<section id="pricing" class="crosshairs">
+  <div class="grid-bg"></div>
+  <div class="container">
+    <div class="section-label mono">10 // Investment</div>
+    <h2><span class="accent">Founding partner</span> pricing, both channels.</h2>
+    <p class="lead">Texas Roof Guardians takes both founding rates: the ChatGPT Ads founding rate and the Meta founding build rate, with the Review Engine included in the program. One fee covers the full 90-day program across all three engines.</p>
+
+    <div class="pricing-2 reveal">
+      <div class="price-card founding">
+        <div class="badge">Founding Partner Program</div>
+        <h3>The 90-Day Growth Program</h3>
+        <div class="sub">ChatGPT Ads + Meta Program + Review Engine · Full build, launch, management, and optimization.</div>
+
+        <div class="price-item">
+          <div class="pname">ChatGPT Ads · 90-Day Market Validation</div>
+          <div class="pamt">$1,500</div>
+          <div class="pmeta">Founding case study rate (standard rate $4,500) · Campaign build across six intent clusters, funnel already delivered, tracking, weekly optimization.</div>
+        </div>
+        <div class="price-item">
+          <div class="pname">Meta Program · 3-Month Founding Build</div>
+          <div class="pamt">$4,500</div>
+          <div class="pmeta">Four campaign lanes plus retargeting, creative system, weekly optimization loop. $1,500 per month equivalent.</div>
+        </div>
+        <div class="price-item">
+          <div class="pname">Review Engine</div>
+          <div class="pamt">Included</div>
+          <div class="pmeta">Automated review requests, owner-voice responses, profile activity. Included in the program for the full term.</div>
+        </div>
+        <div class="price-item">
+          <div class="pname">Total Program Fee</div>
+          <div class="pamt">$6,000 total</div>
+          <div class="pmeta">Covers the full 90-day program · Ad spend is separate and paid directly by you to each platform (recommended starting spend $50/day per platform).</div>
+        </div>
+
+        <div class="price-callout">Continuation after the 90 days is confirmed in writing at the end-of-program review, with no obligation. The founding rates exist because you are an early partner whose documented results help us win the next market. Your results, your account, your data, always.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 11 SCOPE -->
+<section id="scope" class="crosshairs">
+  <div class="grid-bg"></div>
+  <div class="container">
+    <div class="section-label mono">11 // Scope</div>
+    <h2>What is <span class="accent">included</span> and what is not.</h2>
+
+    <div class="two-col reveal">
+      <div class="panel new">
+        <div class="tag">Included</div>
+        <h3>What is included</h3>
+        <ul>
+          <li>The Texas Roof Guardians funnel, homeowner guide, and both walkthroughs (already delivered)</li>
+          <li>Funnel lead form wiring, instant lead alerts, and UTM source attribution</li>
+          <li>Conversion tracking setup on both ad platforms, including pixel and event installation where the platform supports it</li>
+          <li>Complete ChatGPT Ads campaign build across six homeowner intent clusters</li>
+          <li>Complete Meta campaign build: four lanes plus retargeting</li>
+          <li>Ad copy and creative direction for both platforms</li>
+          <li>Automated review request workflow on job completion, sent consistently to eligible customers</li>
+          <li>Review responses in your voice on new Google reviews</li>
+          <li>Weekly performance review and active optimization across both channels</li>
+          <li>Lead quality scoring on every inquiry</li>
+          <li>End-of-program validation report with a continue, scale, or stop recommendation by channel</li>
+        </ul>
+      </div>
+      <div class="panel old">
+        <div class="tag">Not included unless separately agreed</div>
+        <h3>Not included</h3>
+        <ul>
+          <li>Ad spend on either platform (paid directly by Client)</li>
+          <li>Full website rebuild</li>
+          <li>Video production crews (creative is phone-shot by Client with our direction)</li>
+          <li>Long-term SEO</li>
+          <li>Call answering or call center staffing</li>
+          <li>Sales follow-up on behalf of Client</li>
+          <li>Legal advice</li>
+          <li>Guarantee of leads, appointments, contracts, revenue, profit, or ROI</li>
+          <li>Third-party software fees beyond the platform RequityAI provides for the program</li>
+          <li>Advanced custom development beyond the program funnel and tracking</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 12 RESPONSIBILITIES -->
+<section id="responsibilities" class="crosshairs">
+  <div class="grid-bg"></div>
+  <div class="container">
+    <div class="section-label mono">12 // Client Responsibilities</div>
+    <h2><span class="accent">What we need from your side.</span></h2>
+    <p class="lead">The program works when both sides move. Here is what Texas Roof Guardians agrees to bring:</p>
+
+    <div class="check-card reveal">
+      <ul>
+        <li>Access to ad accounts, Google Business Profile, and website/domain where needed</li>
+        <li>Complete advertiser verification on each platform where required</li>
+        <li>Fund ad spend directly on both platforms</li>
+        <li>Approve campaign strategy, ad copy, and funnel messaging before launch</li>
+        <li>Confirm the launch market and service area on the onboarding call</li>
+        <li>Provide accurate credentials, claims figures, and proof for use in ads</li>
+        <li>Batch-record short owner videos with our direction (one or two sessions, not five shoots a week)</li>
+        <li>Respond fast to new inquiries; speed-to-lead is part of the system</li>
+        <li>Confirm customer consent basis for review request texts and emails</li>
+        <li>Track and share lead outcomes honestly so optimization works</li>
+        <li>Participate in the founding case study review</li>
+        <li>Approve any named public use of your results before it happens</li>
+      </ul>
+    </div>
+
+    <div class="callout-bar reveal">
+      <div class="lbl">Speed matters</div>
+      A homeowner who asks for an inspection and waits four hours becomes a competitor's job. The alerts arrive instantly; the callback is yours.
+    </div>
+  </div>
+</section>
+
+<!-- 13 SOW DIVIDER -->
+<section id="agreement-divider" class="auto-h">
+  <div class="container">
+    <div class="divider-label">Formal Agreement</div>
+    <h2>Lock in the <span class="accent">Growth Program</span>.</h2>
+    <p class="lead">Review the Statement of Work, confirm the details, and sign below to begin the Texas Roof Guardians Growth Program with RequityAI.</p>
+  </div>
+</section>
+
+<!-- 13 SOW -->
+<section class="agreement-section" id="sow">
+  <div class="container">
+    <div class="section-label">Section 13 · Statement of Work</div>
+    <h2 style="font-size: clamp(1.7rem, 3.2vw, 2.4rem);">Statement of Work &amp; Services Agreement</h2>
+    <div class="sow-card">
+      <p>This Statement of Work is entered into by and between <strong class="accent">RequityAI LLC</strong> ("Provider") and <strong class="accent">Texas Roof Guardians</strong> ("Client"). Together, this Proposal, Statement of Work, and the signed client confirmation define the agreement between the parties.</p>
+    </div>
+
+    <div style="margin-top:28px;">
+      <div class="clause"><span class="clause-num">01</span><span class="clause-title">Services</span>
+        <div class="clause-body">
+          <p>Provider will deliver the Texas Roof Guardians Growth Program: a 90-day cross-channel acquisition implementation covering ChatGPT Ads, Meta (Facebook and Instagram) advertising, and an automated review workflow.</p>
+          <p>Services include:</p>
+          <ul>
+            <li>The delivered Texas Roof Guardians funnel, homeowner guide, and campaign walkthroughs</li>
+            <li>Funnel lead form wiring, instant lead alerts, and UTM source attribution</li>
+            <li>Conversion tracking setup on both platforms, including pixel and event installation where the platform supports it</li>
+            <li>ChatGPT Ads campaign architecture and build across six homeowner intent clusters</li>
+            <li>Meta campaign architecture and build across four campaign lanes plus retargeting</li>
+            <li>Ad copy and creative direction for both platforms</li>
+            <li>Automated review request workflow and review responses as described in this proposal</li>
+            <li>Weekly performance review and optimization across both channels</li>
+            <li>Lead quality scoring and reporting</li>
+            <li>End-of-program validation report with recommendation by channel</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="clause"><span class="clause-num">02</span><span class="clause-title">Term</span>
+        <div class="clause-body">
+          <p>The term of this engagement is the 90-Day Growth Program. The term begins at campaign launch, targeted for Monday, August 10, 2026, following completion of payment, onboarding, and required access.</p>
+          <p>Continuation after the initial 90 days is optional for both parties and will be confirmed in writing at the end-of-program review.</p>
+        </div>
+      </div>
+
+      <div class="clause"><span class="clause-num">03</span><span class="clause-title">Market Exclusivity</span>
+        <div class="clause-body">
+          <p>For the duration of the active engagement, Provider will not provide ChatGPT Ads or Meta advertising services to any other roofing company within Client's market, defined as the metropolitan area the campaigns are targeted to and confirmed at onboarding. This is a commitment about which companies Provider works with; it is not a promise of exclusive advertising inventory on any platform, and Provider cannot prevent other advertisers from advertising in the market. This exclusivity applies only while the engagement is active and Client is current on payment, and does not survive termination, non-renewal, non-payment, or any lapse of the engagement.</p>
+        </div>
+      </div>
+
+      <div class="clause"><span class="clause-num">04</span><span class="clause-title">Pricing &amp; Payment</span>
+        <div class="clause-body">
+          <p>Client agrees to pay the Total Program Fee of <strong style="color:var(--text);">$6,000</strong>, comprising the ChatGPT Ads founding rate of $1,500 and the Meta founding build rate of $4,500, with the Review Engine included. The fee is due upon signing and before implementation begins, unless different payment terms are recorded in the Additional Terms section of this agreement.</p>
+          <p>The fee covers the full 90-day program. It is not an installment agreement, and no recurring billing is created for the initial term.</p>
+          <p>Advertising spend is separate and is paid directly by Client to each advertising platform. Recommended starting ad spend is $50/day per platform; ad spend levels are always Client's decision.</p>
+        </div>
+      </div>
+
+      <div class="clause"><span class="clause-num">05</span><span class="clause-title">Scope</span>
+        <div class="clause-body">
+          <p>Unless otherwise agreed in writing, this agreement does not include:</p>
+          <ul>
+            <li>Ad spend</li>
+            <li>Legal advice</li>
+            <li>Guaranteed leads, appointments, contracts, revenue, or profit</li>
+            <li>Full website rebuild</li>
+            <li>Long-term SEO</li>
+            <li>Call answering or call center staffing</li>
+            <li>Sales follow-up on behalf of Client</li>
+            <li>Third-party software fees beyond the platform Provider supplies for the program</li>
+            <li>Advanced custom development beyond the program funnel and tracking setup</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="clause"><span class="clause-num">06</span><span class="clause-title">Client Responsibilities</span>
+        <div class="clause-body">
+          <p>Client agrees to:</p>
+          <ul>
+            <li>Provide required access to ad accounts, Google Business Profile, and website where needed</li>
+            <li>Complete advertiser verification where required</li>
+            <li>Fund ad spend directly</li>
+            <li>Approve strategy, copy, and creative in a timely manner</li>
+            <li>Provide accurate market, service-area, and ideal-job criteria</li>
+            <li>Provide accurate credentials, claims figures, and compliance preferences</li>
+            <li>Record short owner-led video content with Provider's direction</li>
+            <li>Respond promptly to new inquiries</li>
+            <li>Confirm the consent basis for customer review requests sent by text or email</li>
+            <li>Track and share lead outcome data</li>
+            <li>Participate in case study review where applicable</li>
+            <li>Maintain proper licensing, disclosures, and local compliance</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="clause"><span class="clause-num">07</span><span class="clause-title">Copy Approval</span>
+        <div class="clause-body">
+          <p>Client is responsible for reviewing and approving campaign copy, funnel messaging, review request wording, and offer language before launch.</p>
+          <p>Provider will provide strategic recommendations, but Client is responsible for confirming that public-facing claims, credentials, statistics, disclosures, and offer language are accurate and appropriate for Client's business, market, and compliance obligations.</p>
+        </div>
+      </div>
+
+      <div class="clause"><span class="clause-num">08</span><span class="clause-title">Review Workflow Compliance</span>
+        <div class="clause-body">
+          <p>The review workflow sends the same review invitation to every eligible completed customer and offers a private feedback route that does not block or filter the public review path. Provider will not implement selective review solicitation or review gating. Client agrees not to request modifications to the workflow that would violate the review policies of Google or any other platform.</p>
+        </div>
+      </div>
+
+      <div class="clause"><span class="clause-num">09</span><span class="clause-title">Performance Disclaimer</span>
+        <div class="clause-body">
+          <p>Provider does not guarantee lead volume, homeowner consultations, booked inspections, signed jobs, review counts, revenue, profit, ad approval, or specific performance outcomes on any channel.</p>
+          <p>Performance depends on market conditions, platform behavior, ad review, targeting availability, budget, funnel quality, follow-up speed, offer quality, competition, and other variables outside Provider's control.</p>
+        </div>
+      </div>
+
+      <div class="clause"><span class="clause-num">10</span><span class="clause-title">Platform Disclaimer</span>
+        <div class="clause-body">
+          <p>Client understands that ChatGPT Ads are an emerging advertising channel and that all advertising platforms may change features, account access, ad review, targeting options, billing requirements, and reporting at any time. ChatGPT ads are labeled sponsored placements shown below relevant conversations; they do not change or appear inside the assistant's answer, and delivery in any specific conversation is not guaranteed.</p>
+          <p>Provider will use commercially reasonable efforts to manage within available platform functionality.</p>
+        </div>
+      </div>
+
+      <div class="clause"><span class="clause-num">11</span><span class="clause-title">No Legal or Financial Advice</span>
+        <div class="clause-body">
+          <p>Provider does not provide legal, financial, tax, insurance, engineering, structural, or compliance advice. Client is responsible for obtaining independent professional advice where needed, including for insurance-related claims language and customer messaging consent.</p>
+        </div>
+      </div>
+
+      <div class="clause"><span class="clause-num">12</span><span class="clause-title">Intellectual Property</span>
+        <div class="clause-body">
+          <p>Provider retains ownership of its strategy, frameworks, templates, campaign structures, prompts, processes, documentation, and proprietary systems.</p>
+          <p>Client owns its ad accounts, audiences, customer data, and leads. Client receives a license to use the campaign assets, funnel, and guide created specifically for Client for the duration of the active engagement and any continuation.</p>
+        </div>
+      </div>
+
+      <div class="clause"><span class="clause-num">13</span><span class="clause-title">Confidentiality</span>
+        <div class="clause-body">
+          <p>Both parties agree to keep non-public business, financial, customer, campaign, and operational information confidential.</p>
+        </div>
+      </div>
+
+      <div class="clause"><span class="clause-num">14</span><span class="clause-title">Founding Partner Terms</span>
+        <div class="clause-body">
+          <p>Because Client is receiving founding partner pricing on both channels, Client agrees to participate as a founding case study partner. This includes reasonable cooperation with performance reviews, feedback requests, case study interviews, and outcome reporting.</p>
+          <p>Client agrees that RequityAI may use anonymized campaign data, market-level learnings, funnel insights, and non-identifying performance trends for internal improvement, marketing, education, and sales materials.</p>
+          <p>RequityAI will request Client approval before publishing any named case study, testimonial, logo use, client-identifying performance result, or direct quote.</p>
+        </div>
+      </div>
+
+      <div class="clause"><span class="clause-num">15</span><span class="clause-title">Limitation of Liability</span>
+        <div class="clause-body">
+          <p>Provider's total liability under this agreement is limited to the amount paid by Client to Provider under this agreement.</p>
+          <p>Provider is not liable for indirect, incidental, consequential, special, punitive, lost profit, lost revenue, or platform-related damages.</p>
+        </div>
+      </div>
+
+      <div class="clause"><span class="clause-num">16</span><span class="clause-title">Governing Law</span>
+        <div class="clause-body">
+          <p>This agreement is governed by the laws of the State of Wyoming, where Provider is organized, without regard to conflict-of-law principles.</p>
+        </div>
+      </div>
+
+      <div class="clause"><span class="clause-num">17</span><span class="clause-title">Entire Agreement</span>
+        <div class="clause-body">
+          <p>This Statement of Work, together with the accepted proposal and any written addenda, represents the entire agreement between the parties.</p>
+          <p>Any amendments must be in writing and signed by both parties.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 14 CLIENT INFO -->
+<section class="agreement-section" id="client-info">
+  <div class="container">
+    <div class="section-label">Section 14 · Client Information</div>
+    <h2 style="font-size: clamp(1.7rem, 3.2vw, 2.4rem);">Client Information</h2>
+    <form id="agreement-form" class="sow-card" novalidate>
+      <div class="form-grid">
+        <div class="form-field">
+          <label for="f-name">Client Legal Name <span class="req">*</span></label>
+          <input id="f-name" name="full_name" type="text" placeholder="Full legal name" required>
+        </div>
+        <div class="form-field">
+          <label for="f-company">Company Name <span class="req">*</span></label>
+          <input id="f-company" name="company" type="text" value="Texas Roof Guardians" required>
+        </div>
+        <div class="form-field">
+          <label for="f-email">Email <span class="req">*</span></label>
+          <input id="f-email" name="email" type="email" value="dustin@txroofguardians.com" required>
+        </div>
+        <div class="form-field">
+          <label for="f-phone">Phone</label>
+          <input id="f-phone" name="phone" type="tel" placeholder="(555) 555-5555">
+        </div>
+        <div class="form-field">
+          <label for="f-market">Representative Name</label>
+          <input id="f-market" name="representative_name" type="text" placeholder="Representative name">
+        </div>
+        <div class="form-field">
+          <label for="f-title">Representative Title</label>
+          <input id="f-title" name="title" type="text" placeholder="Owner">
+        </div>
+        <div class="form-field full">
+          <label for="f-billing">Business Address</label>
+          <input id="f-billing" name="billing_address" type="text" placeholder="Street, City, State, ZIP">
+        </div>
+        <div class="form-field full">
+          <label for="f-plan">Selected Program <span class="req">*</span></label>
+          <select id="f-plan" name="selected_plan" required>
+            <option value="90-Day Growth Program · ChatGPT Ads + Meta + Review Engine · $6,000 total" selected>90-Day Growth Program · ChatGPT Ads + Meta + Review Engine · $6,000 total</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="f-fee">Agreed Fee <span class="req">*</span></label>
+          <input id="f-fee" name="agreed_fee" type="text" value="$6,000 total" required>
+        </div>
+        <div class="form-field">
+          <label for="f-spend">Starting Ad Spend</label>
+          <input id="f-spend" name="starting_ad_spend" type="text" placeholder="$50 / day per platform" value="$50 / day per platform">
+        </div>
+        <div class="form-field full">
+          <label for="f-geo">Geographic Exclusivity</label>
+          <input id="f-geo" name="geographic_exclusivity" type="text" value="Exclusive roofing partner in Client's launch market (confirmed at onboarding) for the duration of this engagement">
+        </div>
+        <div class="form-field full" id="custom-terms-block" style="display:none;">
+          <div class="custom-terms">
+            <div class="ct-lbl">Your Terms</div>
+            <div class="ct-body" id="custom-terms-body"></div>
+          </div>
+        </div>
+        <div class="form-field full">
+          <label for="f-terms">Additional Terms &amp; Conditions / Negotiated Adjustments</label>
+          <textarea id="f-terms" name="additional_terms" rows="5" placeholder="Use this space to record any negotiated changes to fees, payment terms, scope, exclusivity, or other custom terms agreed between Client and Provider. Anything entered here supersedes the standard terms above."
+            style="width:100%;min-height:120px;padding:14px 16px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);border-radius:6px;font-family:inherit;font-size:0.95rem;line-height:1.55;resize:vertical;"></textarea>
+        </div>
+      </div>
+      <div class="submit-row">
+        <button type="button" class="btn-primary" id="save-client-info-btn">Save Client Information</button>
+      </div>
+      <div class="submit-status" id="save-client-info-status"></div>
+    </form>
+  </div>
+</section>
+
+<!-- 15 PROVIDER -->
+<section class="agreement-section" id="provider-info">
+  <div class="container">
+    <div class="section-label">Section 15 · Provider</div>
+    <h2 style="font-size: clamp(1.7rem, 3.2vw, 2.4rem);">Provider Information</h2>
+    <div class="provider-block">
+      <div><div class="pf-label">Provider</div><div class="pf-value">RequityAI LLC</div></div>
+      <div><div class="pf-label">Representative</div><div class="pf-value">Andrew Cherry</div></div>
+      <div><div class="pf-label">Title</div><div class="pf-value">Founder</div></div>
+      <div><div class="pf-label">Email</div><div class="pf-value">andrew@requityai.com</div></div>
+      <div><div class="pf-label">Date</div><div class="pf-value" id="provider-date">&nbsp;</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 16 SIGNATURE -->
+<section class="agreement-section" id="signature">
+  <div class="container">
+    <div class="section-label">Section 16 · Client Signature</div>
+    <h2 style="font-size: clamp(1.7rem, 3.2vw, 2.4rem);">Client Signature</h2>
+
+    <div class="sow-card" style="margin-top:16px;">
+      <p>I confirm that I have reviewed this Proposal, Statement of Work, and Terms and Conditions, and that I am authorized to sign this agreement on behalf of Texas Roof Guardians.</p>
+    </div>
+
+    <div class="agree-row">
+      <input type="checkbox" id="f-agree" name="agree" required>
+      <label for="f-agree">I agree to the Proposal, Statement of Work, and Terms and Conditions.</label>
+    </div>
+
+    <div class="form-grid" style="margin-top:24px;">
+      <div class="form-field">
+        <label for="f-typed">Full Name <span class="req">*</span></label>
+        <input id="f-typed" name="typed_name" type="text" placeholder="Type your full legal name" required>
+      </div>
+      <div class="form-field">
+        <label for="f-sigtitle">Title</label>
+        <input id="f-sigtitle" name="sig_title" type="text" placeholder="Owner">
+      </div>
+      <div class="form-field">
+        <label for="f-date">Date</label>
+        <input id="f-date" name="date_signed" type="date" readonly>
+      </div>
+    </div>
+
+    <div class="sig-stage">
+      <h4>Drawn signature</h4>
+      <div class="sig-canvas-wrap">
+        <canvas id="sig-canvas"></canvas>
+        <div class="sig-placeholder" id="sig-placeholder">Sign here with mouse or finger</div>
+      </div>
+      <div class="sig-tools">
+        <span class="helper">Electronic signature has the same legal effect as a handwritten signature.</span>
+        <button type="button" class="btn-clear" id="sig-clear">Clear</button>
+      </div>
+    </div>
+
+    <div class="submit-row">
+      <button type="button" class="btn-primary" id="submit-btn">Submit Signed Agreement</button>
+      <button type="button" class="btn-secondary" id="print-btn">Download PDF Copy</button>
+    </div>
+    <div class="submit-status" id="submit-status"></div>
+  </div>
+</section>
+
+<script>
+  const SUPABASE_URL = 'https://ldlhgtghhetfhtyskwdt.supabase.co';
+  const ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxkbGhndGdoaGV0Zmh0eXNrd2R0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjE0NTk0MjAsImV4cCI6MjA3NzAzNTQyMH0.3LXDEgHPsLe2rOJjBqpLi6ta-MjA4kRFhgonyGzx6rE';
+
+  // Date defaults
+  (function(){
+    const today = new Date();
+    document.getElementById('f-date').value = today.toISOString().slice(0,10);
+    document.getElementById('provider-date').textContent =
+      today.toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' });
+  })();
+
+  /* View tracking + time-spent (excludes admin browsers); active when a ?slug= is present */
+  (function trackProposalView(){
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const slug = params.get('slug');
+      if (!slug) return;
+
+      let isAdmin = false;
+      try { isAdmin = localStorage.getItem('requity_admin') === '1'; } catch(_) {}
+      if (params.get('preview') === '1') {
+        try { localStorage.setItem('requity_admin', '1'); } catch(_) {}
+        isAdmin = true;
+      }
+      if (isAdmin) return;
+
+      const headers = { 'Content-Type': 'application/json', apikey: ANON, Authorization: `Bearer ${ANON}` };
+
+      fetch(`${SUPABASE_URL}/rest/v1/rpc/increment_proposal_view`, {
+        method: 'POST', headers, keepalive: true, body: JSON.stringify({ _slug: slug })
+      }).catch(() => {});
+
+      fetch(`${SUPABASE_URL}/functions/v1/notify-proposal-viewed-client`, {
+        method: 'POST', headers, body: JSON.stringify({ slug })
+      }).catch(() => {});
+
+      let lastFlush = Date.now();
+      let pending = 0;
+      let visible = !document.hidden;
+      let sessionId = null;
+
+      fetch(`${SUPABASE_URL}/rest/v1/rpc/start_proposal_view_session`, {
+        method: 'POST', headers,
+        body: JSON.stringify({ _slug: slug, _user_agent: navigator.userAgent || '', _referrer: document.referrer || '' })
+      }).then(r => r.ok ? r.json() : null).then(id => { sessionId = id; }).catch(() => {});
+
+      function accumulate(){
+        if (visible) {
+          const now = Date.now();
+          pending += Math.round((now - lastFlush) / 1000);
+          lastFlush = now;
+        }
+      }
+      function flush(){
+        accumulate();
+        const seconds = pending;
+        if (seconds < 2) return;
+        pending = 0;
+        const opts = { method: 'POST', headers, keepalive: true, body: JSON.stringify({ _slug: slug, _seconds: seconds }) };
+        try { fetch(`${SUPABASE_URL}/rest/v1/rpc/add_proposal_view_time`, opts); } catch(_) {}
+        if (sessionId) {
+          try {
+            fetch(`${SUPABASE_URL}/rest/v1/rpc/add_view_session_time`, {
+              method: 'POST', headers, keepalive: true,
+              body: JSON.stringify({ _session_id: sessionId, _seconds: seconds })
+            });
+          } catch(_) {}
+        }
+      }
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) { accumulate(); visible = false; flush(); }
+        else { visible = true; lastFlush = Date.now(); }
+      });
+      window.addEventListener('pagehide', () => flush());
+      window.addEventListener('beforeunload', () => flush());
+      setInterval(() => flush(), 30000);
+    } catch (_) {}
+  })();
+
+  // Side-nav active state + reveal on scroll
+  (function(){
+    const navLinks = document.querySelectorAll('.section-nav a');
+    const sections = Array.from(navLinks).map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const id = '#' + e.target.id;
+          navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === id));
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
+    sections.forEach(s => io.observe(s));
+
+    const revealEls = document.querySelectorAll('.reveal, .phase-card');
+    const ro = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); } });
+    }, { threshold: 0.15 });
+    revealEls.forEach(el => ro.observe(el));
+  })();
+
+  // Signature canvas
+  (function(){
+    const canvas = document.getElementById('sig-canvas');
+    const placeholder = document.getElementById('sig-placeholder');
+    const ctx = canvas.getContext('2d');
+    let drawing = false, hasInk = false;
+    function resize(){
+      const rect = canvas.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = rect.width * dpr;
+      canvas.height = rect.height * dpr;
+      ctx.setTransform(1,0,0,1,0,0);
+      ctx.scale(dpr, dpr);
+      ctx.lineWidth = 2; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+      ctx.strokeStyle = '#ff6b35';
+    }
+    resize();
+    window.addEventListener('resize', resize);
+    function pos(e){
+      const rect = canvas.getBoundingClientRect();
+      const t = e.touches ? e.touches[0] : e;
+      return { x: t.clientX - rect.left, y: t.clientY - rect.top };
+    }
+    function start(e){ drawing = true; const p = pos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); e.preventDefault(); }
+    function move(e){
+      if(!drawing) return;
+      const p = pos(e); ctx.lineTo(p.x, p.y); ctx.stroke();
+      if(!hasInk){ hasInk = true; placeholder.style.display = 'none'; }
+      e.preventDefault();
+    }
+    function end(){ drawing = false; }
+    canvas.addEventListener('mousedown', start);
+    canvas.addEventListener('mousemove', move);
+    window.addEventListener('mouseup', end);
+    canvas.addEventListener('touchstart', start, { passive:false });
+    canvas.addEventListener('touchmove', move, { passive:false });
+    canvas.addEventListener('touchend', end);
+    document.getElementById('sig-clear').addEventListener('click', function(){
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      hasInk = false; placeholder.style.display = 'flex';
+    });
+    window.__getSignatureData = function(){ return hasInk ? canvas.toDataURL('image/png') : null; };
+  })();
+
+  document.getElementById('print-btn').addEventListener('click', function(){ window.print(); });
+
+  // Querystring overrides: ?fee= overrides Agreed Fee, ?name= / ?email= / ?phone= prefill
+  (function () {
+    const qs = new URLSearchParams(window.location.search);
+    const feeParam = qs.get('fee');
+    if (feeParam) {
+      const feeInput = document.getElementById('f-fee');
+      if (feeInput) feeInput.value = feeParam;
+      const planSelect = document.getElementById('f-plan');
+      if (planSelect && planSelect.options.length) {
+        const label = `90-Day Growth Program · ChatGPT Ads + Meta + Review Engine · ${feeParam}`;
+        planSelect.options[0].value = label;
+        planSelect.options[0].textContent = label;
+      }
+    }
+    const map = { name: 'f-name', email: 'f-email', phone: 'f-phone', rep: 'f-market', title: 'f-title' };
+    Object.entries(map).forEach(([key, id]) => {
+      const value = qs.get(key);
+      const el = document.getElementById(id);
+      if (value && el) el.value = value;
+    });
+    const termsParam = qs.get('terms');
+    if (termsParam) {
+      const block = document.getElementById('custom-terms-block');
+      const bodyEl = document.getElementById('custom-terms-body');
+      if (block && bodyEl) { bodyEl.textContent = termsParam; block.style.display = 'block'; }
+      const termsField = document.getElementById('f-terms');
+      if (termsField && !termsField.value) termsField.value = termsParam;
+    }
+  })();
+
+  document.getElementById('save-client-info-btn').addEventListener('click', async function(){
+    const status = document.getElementById('save-client-info-status');
+    status.className = 'submit-status'; status.textContent = '';
+
+    const slug = new URLSearchParams(window.location.search).get('slug');
+    if(!slug){
+      status.className = 'submit-status error';
+      status.textContent = 'Missing proposal link slug. Create the proposal from the admin page first.';
+      return;
+    }
+
+    const form = document.getElementById('agreement-form');
+    const data = Object.fromEntries(new FormData(form).entries());
+    if(data.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)){
+      status.className = 'submit-status error';
+      status.textContent = 'Please enter a valid email address before saving.';
+      return;
+    }
+
+    const btn = document.getElementById('save-client-info-btn');
+    btn.disabled = true; btn.textContent = 'Saving…';
+
+    try {
+      const res = await fetch(`${SUPABASE_URL}/functions/v1/submit-agreement`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'apikey': ANON, 'Authorization': `Bearer ${ANON}` },
+        body: JSON.stringify({ ...data, slug, mode: 'save_client_info' })
+      });
+      if(!res.ok){
+        const txt = await res.text();
+        throw new Error(txt || `HTTP ${res.status}`);
+      }
+      status.className = 'submit-status success';
+      status.textContent = 'Client information saved to this live proposal link.';
+      btn.textContent = 'Saved ✓';
+      setTimeout(() => { btn.disabled = false; btn.textContent = 'Save Client Information'; }, 1800);
+    } catch(err){
+      console.error(err);
+      status.className = 'submit-status error';
+      status.textContent = 'Could not save client information. Please try again.';
+      btn.disabled = false; btn.textContent = 'Save Client Information';
+    }
+  });
+
+  document.getElementById('submit-btn').addEventListener('click', async function(){
+    const status = document.getElementById('submit-status');
+    status.className = 'submit-status'; status.textContent = '';
+
+    const form = document.getElementById('agreement-form');
+    const data = Object.fromEntries(new FormData(form).entries());
+    const typed = document.getElementById('f-typed').value.trim();
+    const sigTitle = document.getElementById('f-sigtitle').value.trim();
+    const dateSigned = document.getElementById('f-date').value;
+    const agreed = document.getElementById('f-agree').checked;
+    const signature = window.__getSignatureData();
+
+    const required = [
+      ['full_name','Client Legal Name'], ['company','Company Name'],
+      ['email','Email'],
+      ['selected_plan','Selected Program'], ['agreed_fee','Agreed Fee']
+    ];
+    for(const [key,label] of required){
+      if(!data[key] || !String(data[key]).trim()){
+        status.className = 'submit-status error';
+        status.textContent = `Please complete: ${label}.`;
+        return;
+      }
+    }
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)){
+      status.className = 'submit-status error';
+      status.textContent = 'Please enter a valid email address.'; return;
+    }
+    if(!agreed){
+      status.className = 'submit-status error';
+      status.textContent = 'You must check the agreement confirmation box.'; return;
+    }
+    if(!typed){
+      status.className = 'submit-status error';
+      status.textContent = 'Please type your full name in the signature section.'; return;
+    }
+    if(!signature){
+      status.className = 'submit-status error';
+      status.textContent = 'Please draw your signature.'; return;
+    }
+
+    const btn = document.getElementById('submit-btn');
+    btn.disabled = true; btn.textContent = 'Submitting…';
+
+    try {
+      const res = await fetch(`${SUPABASE_URL}/functions/v1/submit-agreement`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'apikey': ANON,
+          'Authorization': `Bearer ${ANON}`
+        },
+        body: JSON.stringify({
+          ...data,
+          title: sigTitle,
+          slug: new URLSearchParams(window.location.search).get('slug') || null,
+          typed_name: typed,
+          date_signed: dateSigned,
+          signature_data: signature,
+          variant: 'texas-roof-guardians-agreement',
+          submitted_at: new Date().toISOString(),
+          page_url: window.location.href
+        })
+      });
+      if(!res.ok){
+        const txt = await res.text();
+        throw new Error(txt || `HTTP ${res.status}`);
+      }
+      status.className = 'submit-status success';
+      status.textContent = 'Agreement submitted. RequityAI will confirm receipt and see you at onboarding on Friday, August 7 at 1:00 pm Central.';
+      btn.textContent = 'Submitted ✓';
+    } catch(err){
+      console.error(err);
+      status.className = 'submit-status error';
+      status.textContent = 'Something went wrong submitting your agreement. Please email andrew@requityai.com directly.';
+      btn.disabled = false; btn.textContent = 'Submit Signed Agreement';
+    }
+  });
+</script>
+
+</body>
+</html>
