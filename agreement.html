@@ -1487,6 +1487,19 @@ Ad spend is separate, paid directly by Client to each platform: starting at $50/
   // Querystring overrides: ?fee= overrides Agreed Fee, ?name= / ?email= / ?phone= prefill
   (function () {
     const qs = new URLSearchParams(window.location.search);
+
+    // Generic agreement links do not have a proposal slug. Hide the intermediate
+    // save action in that case so clients proceed directly to signing and submission.
+    if (!qs.get('slug')) {
+      const saveBtn = document.getElementById('save-client-info-btn');
+      if (saveBtn) saveBtn.style.display = 'none';
+      const saveStatus = document.getElementById('save-client-info-status');
+      if (saveStatus) {
+        saveStatus.className = 'submit-status';
+        saveStatus.textContent = 'Complete the information below, then sign and submit the agreement at the bottom of the page.';
+      }
+    }
+
     const feeParam = qs.get('fee');
     if (feeParam) {
       const feeInput = document.getElementById('f-fee');
@@ -1613,7 +1626,9 @@ Ad spend is separate, paid directly by Client to each platform: starting at $50/
         body: JSON.stringify({
           ...data,
           title: sigTitle,
-          slug: new URLSearchParams(window.location.search).get('slug') || null,
+          ...(new URLSearchParams(window.location.search).get('slug')
+            ? { slug: new URLSearchParams(window.location.search).get('slug') }
+            : {}),
           typed_name: typed,
           date_signed: dateSigned,
           signature_data: signature,
@@ -1632,7 +1647,10 @@ Ad spend is separate, paid directly by Client to each platform: starting at $50/
     } catch(err){
       console.error(err);
       status.className = 'submit-status error';
-      status.textContent = 'Something went wrong submitting your agreement. Please email andrew@requityai.com directly.';
+      const detail = err && err.message ? String(err.message).replace(/<[^>]*>/g, '').slice(0, 240) : '';
+      status.textContent = detail
+        ? `The agreement could not be submitted: ${detail}`
+        : 'The agreement could not be submitted. Please contact andrew@requityai.com.';
       btn.disabled = false; btn.textContent = 'Submit Signed Agreement';
     }
   });
