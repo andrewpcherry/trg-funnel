@@ -1,0 +1,62 @@
+name: Agreement submission QA
+
+on:
+  push:
+    paths:
+      - ".github/workflows/agreement-submission-qa.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  test-submission:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Submit clearly marked QA agreement
+        shell: bash
+        run: |
+          mkdir -p qa
+          cat > /tmp/qa-payload.json <<'JSON'
+          {
+            "full_name": "TEST QA - NOT A LEGAL SIGNATURE",
+            "company": "TEST QA - NOT A CONTRACT",
+            "email": "andrew+agreement-qa@requityai.com",
+            "phone": "",
+            "selected_plan": "TEST QA ONLY",
+            "agreed_fee": "TEST QA ONLY - $0",
+            "title": "QA Tester",
+            "typed_name": "TEST QA - NOT A LEGAL SIGNATURE",
+            "date_signed": "2026-08-10",
+            "signature_data": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=",
+            "variant": "texas-roof-guardians-agreement-qa-test",
+            "submitted_at": "2026-08-10T00:00:00.000Z",
+            "page_url": "https://andrewpcherry.github.io/trg-funnel/agreement.html?qa=1",
+            "additional_terms": "AUTOMATED QA TEST ONLY. NOT A CONTRACT OR LEGAL SIGNATURE."
+          }
+          JSON
+
+          http_code=$(curl --silent --show-error --output /tmp/qa-response.txt --write-out "%{http_code}" \
+            --request POST "https://ldlhgtghhetfhtyskwdt.supabase.co/functions/v1/submit-agreement" \
+            --header "Content-Type: application/json" \
+            --header "apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJIUzI1NiIsInJlZiI6ImxkbGhndGdoaGV0Zmh0eXNrd2R0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjE0NTk0MjAsImV4cCI6MjA3NzAzNTQyMH0.3LXDEgHPsLe2rOJjBqpLi6ta-MjA4kRFhgonyGzx6rE" \
+            --header "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJIUzI1NiIsInJlZiI6ImxkbGhndGdoaGV0Zmh0eXNrd2R0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjE0NTk0MjAsImV4cCI6MjA3NzAzNTQyMH0.3LXDEgHPsLe2rOJjBqpLi6ta-MjA4kRFhgonyGzx6rE" \
+            --data-binary @/tmp/qa-payload.json)
+
+          {
+            echo "HTTP_STATUS=$http_code"
+            echo "RESPONSE_BEGIN"
+            sed -n '1,80p' /tmp/qa-response.txt
+            echo
+            echo "RESPONSE_END"
+          } > qa/agreement-submit-result.txt
+
+      - name: Store QA result
+        shell: bash
+        run: |
+          git config user.name "agreement-qa-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add qa/agreement-submit-result.txt
+          git commit -m "Record agreement submission QA result"
+          git push
