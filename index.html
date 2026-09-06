@@ -674,8 +674,8 @@ footer .legal{margin-top:10px;font-size:12px;line-height:1.7}
 /* =====================================================
    BRANCHING QUIZ
    Branches: storm / claim / aging / solar / options
-   FORM SUBMIT: front-end demo only. Wire the submit handler
-   to GHL / webhook / CRM endpoint before launch.
+   Lead capture uses the existing TRG Contact Us form in GHL.
+   GHL owns validation, consent recording and submission confirmation.
 ===================================================== */
 const BRANCH_META = {
   storm:  {label:'Storm Damage',   flag:'flag-storm',  acc:'acc-storm',
@@ -800,9 +800,6 @@ function render(){
   else if (state.phase === 'form'){
     html = renderOutcome();
   }
-  else if (state.phase === 'done'){
-    html = renderConfirm();
-  }
   body.innerHTML = html;
   setChrome();
 }
@@ -850,7 +847,7 @@ function renderOutcome(){
   const renter = state.answers.some(a=>a.id==='owner' && a.a.indexOf('I rent')>-1);
   const outside = state.answers.some(a=>a.id==='area' && a.a==='Outside Central Texas');
   let warn = '';
-  if (renter) warn += '<div class="oc-warn">Since you rent, the property owner will need to authorize any work. Share their contact details below if you can, or pass this page along to them, and we’ll take it from there.</div>';
+  if (renter) warn += '<div class="oc-warn">Since you rent, the property owner will need to authorize any work. Please involve your property owner or manager, or pass this page along to them.</div>';
   if (outside) warn += '<div class="oc-warn">We serve San Antonio, Austin and Central Texas. If the property is outside that area, send the details anyway and we’ll tell you honestly whether we can help or point you in the right direction.</div>';
   let pts = '';
   m.points.forEach(p=>{ pts += '<li><svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg><span>'+p+'</span></li>'; });
@@ -863,37 +860,22 @@ function renderOutcome(){
     + '<ul class="oc-points">'+pts+'</ul>'
     + warn
     + '<div class="oc-summary"><b>What you told us</b>'+tags+'</div>'
-    + '<form class="lead-form" onsubmit="return submitLead(event)">'
-    + '<div class="lf-field"><label>Full name</label><input required name="name" autocomplete="name" placeholder="Your name"></div>'
-    + '<div class="lf-field"><label>Phone</label><input required name="phone" type="tel" autocomplete="tel" placeholder="(210) 555-0123"></div>'
-    + '<div class="lf-field"><label>Email</label><input required name="email" type="email" autocomplete="email" placeholder="you@email.com"></div>'
-    + '<div class="lf-field"><label>Property ZIP code</label><input required name="zip" inputmode="numeric" autocomplete="postal-code" placeholder="78201"></div>'
-    + '<button class="btn btn-red" type="submit">Get My '+(state.branch==='claim'?'Claim Review':state.branch==='solar'?'Consultation':state.branch==='options'?'Consultation & Guide':state.branch==='aging'?'Assessment':'Free Inspection')+'</button>'
-    + '<div class="lf-fine">No obligation · Stays private · Not a commitment to any work</div>'
-    + '</form>'
+    + '<div id="trg-intake" style="margin-top:24px">'
+    + '<iframe src="'+intakeUrl()+'" style="width:100%;height:1100px;border:none;border-radius:3px" id="inline-HkCdW4ow7HkRHJhuPckV" data-layout="{&quot;id&quot;:&quot;INLINE&quot;}" data-trigger-type="alwaysShow" data-activation-type="alwaysActivated" data-deactivation-type="neverDeactivate" data-form-name="Contact Us" data-height="1100" data-layout-iframe-id="inline-HkCdW4ow7HkRHJhuPckV" data-form-id="HkCdW4ow7HkRHJhuPckV" data-cookie-consent="true" data-cookie-consent-provider="auto" title="Texas Roof Guardians request and consent form"></iframe>'
+    + '<p class="lf-fine">If the form does not load, <a href="'+intakeUrl()+'" target="_blank" rel="noopener">open the request form</a> or call <a href="tel:8302286123">830-228-6123</a>. Your request is only sent when the form confirms receipt.</p></div>'
     + navRow() + '</div>';
 }
 
-function submitLead(e){
-  e.preventDefault();
-  /* DEMO ONLY: capture the answers + contact fields here and POST to the
-     CRM / GHL webhook when the funnel goes live. state.answers holds the
-     full qualification trail. */
-  state.phase='done';
-  render();
-  return false;
-}
-
-function renderConfirm(){
-  const m = BRANCH_META[state.branch];
-  return '<div class="q-fade" style="text-align:center;padding-top:14px">'
-    + '<div class="confirm-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div>'
-    + '<div class="oc-title">You’re all set</div>'
-    + '<div class="oc-copy" style="max-width:520px;margin:0 auto 10px">Your request for <b>'+m.title.toLowerCase()+'</b> is in. You’ll get a confirmation right away and a fast follow-up to get it scheduled. If this is urgent, don’t wait on us:</div>'
-    + '<div style="margin:22px 0 8px"><a class="btn btn-navy" href="tel:8302286123">Call 830-228-6123 Now</a></div>'
-    + '<div class="q-note" style="margin-top:16px">Want the free guide while you wait? <a href="repair-replace-or-file-a-claim.pdf" target="_blank" rel="noopener" style="color:var(--blue-2);font-weight:700">Download Repair, Replace or File a Claim?</a></div>'
-    + '<div style="margin-top:26px"><button class="q-back" onclick="startQuiz()" style="margin:0 auto">Start over</button></div>'
-    + '</div>';
+function intakeUrl(){
+  const url = new URL('https://api.leadconnectorhq.com/widget/form/HkCdW4ow7HkRHJhuPckV');
+  url.searchParams.set('message', '60-second roof assessment\n' + state.answers.map(a=>a.q+': '+a.a).join('\n'));
+  const incoming = new URLSearchParams(window.location.search);
+  ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(key=>{
+    const value=incoming.get(key);
+    if(value) url.searchParams.set(key,value.slice(0,200));
+  });
+  // Escape attributes as well as URL-encoding values; never pass contact PII or consent via the URL.
+  return url.toString().replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
 }
 
 /* =====================================================
@@ -923,5 +905,6 @@ const REVIEWS = [
 startQuizInit();
 function startQuizInit(){ state=null; render(); }
 </script>
+<script src="https://link.msgsndr.com/js/form_embed.js"></script>
 </body>
 </html>
